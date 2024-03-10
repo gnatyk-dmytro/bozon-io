@@ -5,14 +5,15 @@
 <hibernate-configuration>
   <session-factory>
     <!-- Url for DataBase Connection -->
-    <property name="connection.url">jdbc:postgresql://localhost:5432/databaseName</property>
+    <property name="connection.url">jdbc:postgresql://localhost:5432/dbname</property>
     <!-- DataBase Name-->
-    <property name="connection.username">name</property>
+    <property name="connection.username">username</property>
     <!-- DataBase Password -->
     <property name="connection.password">password</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
+    <!-- Mapping File -->
     <mapping class="org.bot.data.UserContext"/>
   </session-factory>
 </hibernate-configuration>

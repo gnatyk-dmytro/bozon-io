@@ -19,7 +19,6 @@ public class HibernateRunner {
             session.saveOrUpdate(userContext);
             transaction.commit();
         } catch (Exception e) {
-            // Handle exception
             e.printStackTrace();
         }
     }
@@ -28,7 +27,6 @@ public class HibernateRunner {
         try (Session session = configuration.buildSessionFactory().openSession()) {
             return session.get(UserContext.class, itemId);
         } catch (Exception e) {
-            // Handle exception
             e.printStackTrace();
             return null;
         }
@@ -43,7 +41,6 @@ public class HibernateRunner {
                 transaction.commit();
             }
         } catch (Exception e) {
-            // Handle exception
             e.printStackTrace();
         }
     }

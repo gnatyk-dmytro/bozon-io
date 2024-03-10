@@ -6,15 +6,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 public class Main {
-    public static void main(String[] args) {
-        try {
-            registerTelegramBot();
-
-            System.out.println("**Bot Start Work:");
-        } catch (Exception e) {
-            System.err.println("Error occurred while registering Telegram bot:");
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws Exception{
+        registerTelegramBot();
+        System.out.println("**Bot start Work:");
     }
 
     private static void registerTelegramBot() throws TelegramApiException {
