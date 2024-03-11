@@ -62,6 +62,18 @@ public class BotSettings extends TelegramLongPollingBot {
         sendMessage(chatId, introMessage);
     }
 
+    private void sendInformation(String chatId) throws TelegramApiException {
+        String information = "";
+
+        sendMessage(chatId, information);
+    }
+
+    private void cryptoInfo(String chatId) throws TelegramApiException {
+        String cryptoInf = "";
+
+        sendMessage(chatId, cryptoInf);
+    }
+
     private void setCustomButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setSelective(true);

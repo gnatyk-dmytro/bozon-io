@@ -15,7 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Properties;
 
-abstract class BotOptions extends BotSettings {
+class BotOptions extends BotSettings {
 
     @Getter
     private String userEmail;
