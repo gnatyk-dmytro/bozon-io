@@ -30,4 +30,8 @@ public class UserContext {
     @Size( max = 32 )
     @Column( name = "_email")
     private String userEmail;
+
+    @NotNull
+    @Column( name = "_num" )
+    private Integer userNum;
 }

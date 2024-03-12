@@ -88,8 +88,13 @@ public class BotSettings extends TelegramLongPollingBot {
         KeyboardRow keyboardSecondRow = new KeyboardRow();
         keyboardSecondRow.add(new KeyboardButton("Sign-in"));
 
+        KeyboardRow keyboardThreeRow = new KeyboardRow();
+        keyboardSecondRow.add(new KeyboardButton("Info"));
+
+
         keyboard.add(keyboardFirstRow);
         keyboard.add(keyboardSecondRow);
+        keyboard.add(keyboardThreeRow);
 
         replyKeyboardMarkup.setKeyboard(keyboard);
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
