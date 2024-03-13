@@ -6,22 +6,22 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+import java.util.Date;
 
 public class EmailUtil {
-    public static void sendEmail(String smtpHost, String from, String to, String subject, String body) throws MessagingException {
-        Properties props = new Properties();
-        props.put("mail.smtp.host", smtpHost);
 
-        Session session = Session.getInstance(props, null);
-        MimeMessage message = new MimeMessage(session);
-
-        message.setFrom(new InternetAddress(from));
-        message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-        message.setSubject(subject);
-        message.setText(body);
-
-        Transport.send(message);
+    public static void sendEmail(Session session, String toEmail, String subject, String body) {
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("example@example.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            message.setSubject(subject);
+            message.setText(body);
+            message.setSentDate(new Date());
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }

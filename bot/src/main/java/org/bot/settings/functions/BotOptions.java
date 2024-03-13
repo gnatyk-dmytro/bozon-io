@@ -38,4 +38,8 @@ public class BotOptions extends BotSettings {
             emailRequested = false;
         }
     }
+
+    private static void mailVerify(String emailAdress) {
+
+    }
 }
