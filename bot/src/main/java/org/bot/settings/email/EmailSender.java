@@ -27,7 +27,11 @@ public class EmailSender {
         EmailUtil.sendEmail(session, userEmail, "Welcome to bozon:io", emailBody);
     }
 
-    private static Integer codeGenerator() {
+    private static boolean checkAuth(int code) {
+        return code == codeGenerator();
+    }
+
+    private static int codeGenerator() {
         Random random = new Random();
         return random.nextInt(900000) + 100000;
     }

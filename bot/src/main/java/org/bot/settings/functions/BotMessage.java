@@ -16,21 +16,23 @@ public class BotMessage extends BotOptions {
     }
 
     public static void sendSettingsMessage(String chatId) throws TelegramApiException {
-        String settingsMessage = "⚙️ Settings:\n" +
-                "1. Change Language\n" +
-                "2. Change Notification Settings\n" +
-                "3. Manage Account\n" +
-                "4. Privacy & Security";
+        String settingsMessage = """
+                ⚙️ Settings:
+                1. Change Language
+                2. Change Notification Settings
+                3. Manage Account
+                4. Privacy & Security""";
 
         botSettings.sendMessage(chatId, settingsMessage);
     }
 
     public static void sendHelpMessage(String chatId) throws TelegramApiException {
-        String helpMessage = "❓ Help:\n" +
-                "1. How to Use the Bot\n" +
-                "2. FAQ\n" +
-                "3. Contact Support\n" +
-                "4. Report an Issue";
+        String helpMessage = """
+                ❓ Help:
+                1. How to Use the Bot
+                2. FAQ
+                3. Contact Support
+                4. Report an Issue""";
 
         botSettings.sendMessage(chatId, helpMessage);
     }

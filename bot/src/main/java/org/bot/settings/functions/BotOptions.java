@@ -26,15 +26,15 @@ public class BotOptions extends BotSettings {
         } else {
             String getText = update.getMessage().getText();
 
-            HibernateRunner hibernateRunner = new HibernateRunner(configuration);
             UserContext userContext = new UserContext();
+            HibernateRunner.setConfiguration(configuration);
 
-            userContext.setUserId(userId);
             userContext.setUserName(userName);
             userContext.setUserEmail(getText);
+            userContext.setUserId(userId);
             userContext.setUserNum(1);
 
-            hibernateRunner.dbAdd(userContext);
+            HibernateRunner.dbAdd(userContext);
             emailRequested = false;
         }
     }
