@@ -1,18 +1,19 @@
-package org.bot.settings;
-
+package org.bot.settings.functions;
 
 import org.bot.HibernateRunner;
 import org.bot.data.UserContext;
+import org.bot.settings.BotSettings;
 
 import org.hibernate.cfg.Configuration;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-class BotOptions extends BotSettings {
+public class BotOptions extends BotSettings {
 
-    private boolean emailRequested = false;
+    private static boolean emailRequested = false;
+    private static final BotSettings botSettings = new BotSettings();
 
-    public void SignIn(Update update) throws TelegramApiException {
+    public static void SignIn(Update update) throws TelegramApiException {
         Configuration configuration = new Configuration().configure();
         String chatId = update.getMessage().getChatId().toString();
 
@@ -20,7 +21,7 @@ class BotOptions extends BotSettings {
         String userName = update.getMessage().getFrom().getUserName();
 
         if (!emailRequested) {
-            sendMessage(chatId, "Please type your email: ");
+            botSettings.sendMessage(chatId, "Please type your email: ");
             emailRequested = true;
         } else {
             String getText = update.getMessage().getText();
