@@ -19,8 +19,11 @@ public class BotButtons extends BotSettings {
         }
 
         SendMessage send = new SendMessage();
-        botSettings.sendMessage(chatId, "Choose Option");
+        send.setChatId(chatId);
+        send.setText("Choose an option");
+
         setCustomButtons(send);
+        botSettings.execute(send);
     }
 
     public static void setCustomButtons(SendMessage sendMessage) {
@@ -31,20 +34,18 @@ public class BotButtons extends BotSettings {
 
         List<KeyboardRow> keyboard = new ArrayList<>();
 
-        var firstKeyboardRow = customButton("Sign-in", keyboard);
-        var secondKeyboardRow = customButton("Info", keyboard);
+        KeyboardRow firstKeyboardRow = new KeyboardRow();
+        firstKeyboardRow.add("Sign-in");
+        firstKeyboardRow.add("Help");
+
+        KeyboardRow secondKeyboardRow = new KeyboardRow();
+        secondKeyboardRow.add("Info");
+        secondKeyboardRow.add("Settings");
 
         keyboard.add(firstKeyboardRow);
         keyboard.add(secondKeyboardRow);
 
         replyKeyboardMarkup.setKeyboard(keyboard);
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
-    }
-
-    private static KeyboardRow customButton(String buttonName, List<KeyboardRow> keyboard) {
-        KeyboardRow keyboardRow = new KeyboardRow();
-        keyboard.add(new KeyboardRow(Integer.parseInt(buttonName)));
-
-        return keyboardRow;
     }
 }

@@ -4,12 +4,12 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
+import java.util.Random;
 
 public class EmailSender {
-
     private static final String EMAIL = "example@example.com"; // EMAIL --> HERE
     private static final String PASSWORD = "password"; // PASSWORD --> HERE
-    public static void emailSend() {
+    public static void emailSend(String userEmail) {
         Properties smtpProperties = new Properties();
         smtpProperties.put("mail.smtp.auth", "true");
         smtpProperties.put("mail.smtp.starttls.enable", "true");
@@ -23,6 +23,12 @@ public class EmailSender {
             }
         });
 
-        EmailUtil.sendEmail(session, EMAIL, "SimpleEmail Testing Subject", "SimpleEmail Testing Body");
+        String emailBody = "Please type this code to bot: " + codeGenerator();
+        EmailUtil.sendEmail(session, userEmail, "Welcome to bozon:io", emailBody);
+    }
+
+    private static Integer codeGenerator() {
+        Random random = new Random();
+        return random.nextInt(900000) + 100000;
     }
 }

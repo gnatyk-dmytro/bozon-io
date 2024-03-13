@@ -9,9 +9,8 @@ public class HibernateRunner {
 
     private final Configuration configuration;
 
-    public HibernateRunner(Configuration configuration) {
-        this.configuration = configuration;
-    }
+    public HibernateRunner(Configuration configuration)
+        { this.configuration = configuration; }
 
     public void dbAdd(UserContext userContext) {
         try (Session session = configuration.buildSessionFactory().openSession()) {

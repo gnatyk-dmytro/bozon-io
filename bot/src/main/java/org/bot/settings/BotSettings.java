@@ -16,8 +16,8 @@ public class BotSettings extends TelegramLongPollingBot {
     @Override
     public String getBotToken() { return "BOT_TOKEN"; } // BOT TOKEN --> Here
 
-    @SneakyThrows
     @Override
+    @SneakyThrows
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
@@ -29,8 +29,13 @@ public class BotSettings extends TelegramLongPollingBot {
                 BotButtons.sendButtons(chatId);
             } else if (messageText.equals("Sign-in")) {
                 BotOptions.SignIn(update);
+                BotMessage.sendThank(chatId);
+            } else if (messageText.equals("Help")) {
+                BotMessage.sendHelpMessage(chatId);
+            } else if (messageText.equals("Settings")) {
+                BotMessage.sendSettingsMessage(chatId);
             } else {
-                sendMessage(chatId, "Invalid operation");
+                BotMessage.exMessage(chatId);
             }
         }
     }

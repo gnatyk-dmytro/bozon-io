@@ -16,6 +16,7 @@ public class EmailUtil {
             message.setFrom(new InternetAddress("example@example.com"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             message.setSubject(subject);
+
             message.setText(body);
             message.setSentDate(new Date());
             Transport.send(message);
