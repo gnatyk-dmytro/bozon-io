@@ -27,7 +27,7 @@ public class EmailSender {
         EmailUtil.sendEmail(session, userEmail, "Welcome to bozon:io", emailBody);
     }
 
-    private static boolean checkAuth(int code) {
+    public static boolean checkAuth(int code) {
         return code == codeGenerator();
     }
 

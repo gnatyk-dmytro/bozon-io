@@ -24,18 +24,18 @@ public class BotSettings extends TelegramLongPollingBot {
             String chatId = update.getMessage().getChatId().toString();
 
             logMessage(update);
-            if (messageText.equals("/start")) {
-                BotMessage.sendIntroductionMessage(chatId);
-                BotButtons.sendButtons(chatId);
-            } else if (messageText.equals("Sign-in")) {
-                BotOptions.SignIn(update);
-                BotMessage.sendThank(chatId);
-            } else if (messageText.equals("Help")) {
-                BotMessage.sendHelpMessage(chatId);
-            } else if (messageText.equals("Settings")) {
-                BotMessage.sendSettingsMessage(chatId);
-            } else {
-                BotMessage.exMessage(chatId);
+            switch (messageText) {
+                case "/start" -> {
+                    BotMessage.sendIntroductionMessage(chatId);
+                    BotButtons.sendButtons(chatId);
+                }
+                case "Sign-in" -> {
+                    BotOptions.SignIn(update);
+                    BotMessage.sendThank(chatId);
+                }
+                case "Help" -> BotMessage.sendHelpMessage(chatId);
+                case "Settings" -> BotMessage.sendSettingsMessage(chatId);
+                default -> BotMessage.exMessage(chatId);
             }
         }
     }
