@@ -6,7 +6,7 @@ import javax.mail.Session;
 import java.util.Properties;
 import java.util.Random;
 
-public class EmailSender {
+public abstract class EmailSender {
     private static final String EMAIL = "example@example.com"; // EMAIL --> HERE
     private static final String PASSWORD = "password"; // PASSWORD --> HERE
     public static void emailSend(String userEmail) {

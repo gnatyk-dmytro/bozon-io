@@ -8,7 +8,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 
-public class EmailUtil {
+public abstract class EmailUtil {
 
     public static void sendEmail(Session session, String toEmail, String subject, String body) {
         try {
