@@ -26,7 +26,7 @@ public class BotButtons extends BotSettings {
         botSettings.execute(send);
     }
 
-    public static void setCustomButtons(SendMessage sendMessage) {
+    private static void setCustomButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
@@ -40,7 +40,7 @@ public class BotButtons extends BotSettings {
 
         KeyboardRow secondKeyboardRow = new KeyboardRow();
         secondKeyboardRow.add("Info");
-        secondKeyboardRow.add("Settings");
+        secondKeyboardRow.add("Currency");
 
         keyboard.add(firstKeyboardRow);
         keyboard.add(secondKeyboardRow);
