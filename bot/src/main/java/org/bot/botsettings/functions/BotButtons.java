@@ -1,6 +1,6 @@
-package org.bot.settings.functions;
+package org.bot.botsettings.functions;
 
-import org.bot.settings.BotSettings;
+import org.bot.botsettings.BotSettings;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;

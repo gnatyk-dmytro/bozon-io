@@ -1,4 +1,4 @@
-package org.bot.settings.email;
+package org.bot.botsettings.email;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;

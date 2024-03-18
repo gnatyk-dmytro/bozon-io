@@ -15,6 +15,7 @@
           <option value="bot" />
           <option value="bot" />
           <option value="bot" />
+          <option value="bot" />
         </list>
       </option>
       <option name="ignoredPackages">
@@ -24,10 +25,12 @@
           <option value="com.google.guava:guava:30.0-jre" />
           <option value="org.glassfish.jersey.core:jersey-common:2.32" />
           <option value="org.json:json:20180813" />
+          <option value="org.jsoup:jsoup:1.10.2" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />

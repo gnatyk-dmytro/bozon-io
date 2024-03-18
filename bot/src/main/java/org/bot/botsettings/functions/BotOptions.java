@@ -1,12 +1,12 @@
-package org.bot.settings.functions;
+package org.bot.botsettings.functions;
 
 import org.bot.HibernateRunner;
 import org.bot.data.UserContext;
-import org.bot.settings.BotSettings;
+import org.bot.botsettings.BotSettings;
 import org.hibernate.cfg.Configuration;
+
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
 import java.util.Optional;
 
 public class BotOptions extends BotSettings {
@@ -56,17 +56,17 @@ public class BotOptions extends BotSettings {
 
     private static void processEmail(Update update,Long userId, String userName) {
         String getText = update.getMessage().getText();
-        UserContext userContext = createUserContext(userId, userName, getText, 0);
+        UserContext userContext = createUserContext(userId, userName, getText);
         HibernateRunner.dbAdd(userContext);
         emailRequested = false;
     }
 
-    private static UserContext createUserContext(Long userId, String userName, String userEmail, Integer userNum) {
+    private static UserContext createUserContext(Long userId, String userName, String userEmail) {
         UserContext userContext = new UserContext();
         userContext.setUserId(userId);
         userContext.setUserName(userName);
         userContext.setUserEmail(userEmail);
-        userContext.setUserNum(userNum);
+        userContext.setUserNum(0);
         return userContext;
     }
 }

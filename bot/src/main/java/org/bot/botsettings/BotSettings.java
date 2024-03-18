@@ -1,9 +1,9 @@
-package org.bot.settings;
+package org.bot.botsettings;
 
 import lombok.SneakyThrows;
-import org.bot.settings.functions.BotButtons;
-import org.bot.settings.functions.BotMessage;
-import org.bot.settings.functions.BotOptions;
+import org.bot.botsettings.functions.BotButtons;
+import org.bot.botsettings.functions.BotMessage;
+import org.bot.botsettings.functions.BotOptions;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -33,22 +33,27 @@ public class BotSettings extends TelegramLongPollingBot {
                     BotOptions.SignIn(update);
                     BotMessage.sendThank(chatId);
                 }
-                case "Currency", "/currency" -> {
-                    BotMessage.sendCurrencyInfo(chatId);
-                }
+                case "Currency", "/currency" -> BotMessage.sendCurrencyInfo(chatId);
                 case "Help", "/help" -> BotMessage.sendHelpMessage(chatId);
                 case "Info", "/info" -> BotMessage.sendInformation(chatId);
+                case "/faq" -> BotMessage.sendFaq(chatId);
+                case "/contact" -> BotMessage.sendContact(chatId);
                 default -> BotMessage.exMessage(chatId);
             }
         }
     }
 
-    public void sendMessage(String chatId, String message) throws TelegramApiException {
+    public void sendMessage(String chatId, String message)  {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
 
         sendMessage.setText(message);
-        execute(sendMessage);
+
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            System.err.println(e);
+        }
     }
 
     private void logMessage(Update update) {

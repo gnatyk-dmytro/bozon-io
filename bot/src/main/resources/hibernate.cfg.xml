@@ -6,8 +6,10 @@
   <session-factory>
     <!-- Url for DataBase Connection -->
     <property name="connection.url">jdbc:postgresql://localhost:5432/dbname</property>
+
     <!-- DataBase Name-->
     <property name="connection.username">username</property>
+
     <!-- DataBase Password -->
     <property name="connection.password">password</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
