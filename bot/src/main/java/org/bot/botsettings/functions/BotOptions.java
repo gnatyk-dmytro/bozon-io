@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Optional;
+import org.bot.coincontext.HeadParser;
+
+import static org.bot.botsettings.functions.BotMessage.sendCurrencyInfo;
 
 public class BotOptions extends BotSettings {
 
@@ -16,7 +19,6 @@ public class BotOptions extends BotSettings {
     private static final BotSettings botSettings = new BotSettings();
 
     public static void SignIn(Update update) throws TelegramApiException {
-        Configuration configuration = configureHibernate();
         String chatId = getChatId(update);
         Long userId = getUserId(update);
         Optional<String> userName = getUserName(update);
@@ -26,6 +28,14 @@ public class BotOptions extends BotSettings {
         } else {
             processEmail(update, userId, userName.orElse(""));
         }
+    }
+
+    public static void GetCurrency(Update update, String chatId) {
+        HeadParser headParser = new HeadParser();
+        String getCurrency = update.getMessage().getText();
+
+        sendCurrencyInfo(chatId);
+        botSettings.sendMessage(chatId, "Currency: " + getCurrency + " price:" + headParser.startParse(getCurrency, chatId));
     }
 
     private static Configuration configureHibernate() {

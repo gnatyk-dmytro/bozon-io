@@ -33,7 +33,7 @@ public class BotSettings extends TelegramLongPollingBot {
                     BotOptions.SignIn(update);
                     BotMessage.sendThank(chatId);
                 }
-                case "Currency", "/currency" -> BotMessage.sendCurrencyInfo(chatId);
+                case "Currency", "/currency" -> BotOptions.GetCurrency(update, chatId);
                 case "Help", "/help" -> BotMessage.sendHelpMessage(chatId);
                 case "Info", "/info" -> BotMessage.sendInformation(chatId);
                 case "/faq" -> BotMessage.sendFaq(chatId);

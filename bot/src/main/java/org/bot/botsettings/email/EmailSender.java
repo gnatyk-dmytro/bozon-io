@@ -7,8 +7,10 @@ import java.util.Properties;
 import java.util.Random;
 
 public abstract class EmailSender {
-    private static final String EMAIL = "example@example.com"; // EMAIL --> HERE
-    private static final String PASSWORD = "password"; // PASSWORD --> HERE
+    private static final String EMAIL = System.getenv("SMTP_EMAIL");
+    private static final String PASSWORD = System.getenv("SMTP_PASSWORD");
+    private static int generatedCode;
+
     public static void emailSend(String userEmail) {
         Properties smtpProperties = new Properties();
         smtpProperties.put("mail.smtp.auth", "true");
@@ -23,12 +25,13 @@ public abstract class EmailSender {
             }
         });
 
-        String emailBody = "Please type this code to bot: " + codeGenerator();
+        generatedCode = codeGenerator();
+        String emailBody = "Please type this code to bot: " + generatedCode;
         EmailUtil.sendEmail(session, userEmail, "Welcome to bozon:io", emailBody);
     }
 
     public static boolean checkAuth(int code) {
-        return code == codeGenerator();
+        return code == generatedCode;
     }
 
     private static int codeGenerator() {

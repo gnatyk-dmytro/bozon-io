@@ -53,18 +53,15 @@ public class BotMessage extends BotOptions {
     }
 
     public static void sendCurrencyInfo(String chatId) {
-        String currMessage = "Type the name of crypto-currency:";
+        String currInf = "Currency information:";
+        String currMessage = "Type the name of currency: \nExample: bitcoin, ethereum, etc.";
+        botSettings.sendMessage(chatId, currInf);
         botSettings.sendMessage(chatId, currMessage);
     }
 
     public static void sendCurrencyNotFound(String chatId) {
         String currencyNotFound = "❌ Sorry, the currency you requested was not found. Please try again.";
         botSettings.sendMessage(chatId, currencyNotFound);
-    }
-
-    public static void sendPriceNotFound(String chatId) {
-        String priceNotFound = "❌ Sorry, the price for the requested cryptocurrency could not be found. Please try again later.";
-        botSettings.sendMessage(chatId, priceNotFound);
     }
 
     public static void sendGenericErrorMessage(String chatId) {
