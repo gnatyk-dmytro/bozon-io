@@ -38,10 +38,6 @@ public class BotOptions extends BotSettings {
         botSettings.sendMessage(chatId, "Currency: " + getCurrency + " price:" + headParser.startParse(getCurrency, chatId));
     }
 
-    private static Configuration configureHibernate() {
-        return new Configuration().configure();
-    }
-
     private static String getChatId(Update update) {
         return update.getMessage().getChatId().toString();
     }

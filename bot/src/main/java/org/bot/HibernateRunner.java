@@ -15,11 +15,10 @@ public class HibernateRunner {
     private static Configuration configuration;
     @NotNull
     private static final Session session = configuration.buildSessionFactory().openSession();
-    @NotNull
-    private static final Transaction transaction = session.beginTransaction();
 
     public static void dbAdd(UserContext userContext) {
         try (session) {
+            Transaction transaction = session.beginTransaction();
             session.saveOrUpdate(userContext);
             transaction.commit();
         } catch (Exception e) {
@@ -38,6 +37,7 @@ public class HibernateRunner {
 
     public static void dbDrop(Integer itemId) {
         try (session) {
+            Transaction transaction = session.beginTransaction();
             var userContext = session.get(UserContext.class, itemId);
             if (userContext != null) {
                 session.delete(userContext);
