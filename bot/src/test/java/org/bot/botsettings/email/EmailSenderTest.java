@@ -10,5 +10,6 @@ class EmailSenderTest {
 
     @Test
     void checkAuth() {
+
     }
 }
