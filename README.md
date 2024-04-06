@@ -22,7 +22,7 @@ bozon-io is a Telegram bot designed to provide users with cryptocurrency price u
 ## Usage
 1. **Querying Cryptocurrency Prices:**
 - Send a specific command to the bot to inquire about the price of a particular cryptocurrency.
-- Example: `/price BTC` will fetch the current price of Bitcoin.
+- Example: `/currency` will fetch the current price of Bitcoin.
 2. **Subscription Management:**
 - Subscribe, unsubscribe, or modify subscription preferences to receive regular updates on cryptocurrency prices.
 
