@@ -1,49 +1,49 @@
 package org.bot;
 
-import lombok.Setter;
 import org.bot.data.UserContext;
 import org.hibernate.Session;
-
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import javax.validation.constraints.NotNull;
+import org.hibernate.HibernateException;
+import org.bot.data.HibernateUtil;
 
 public class HibernateRunner {
-
-    @Setter
-    @NotNull
-    private static Configuration configuration;
-    @NotNull
-    private static final Session session = configuration.buildSessionFactory().openSession();
-
     public static void dbAdd(UserContext userContext) {
-        try (session) {
-            Transaction transaction = session.beginTransaction();
-            session.saveOrUpdate(userContext);
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(userContext);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
         }
     }
 
     public static UserContext getById(Integer itemId) {
-        try (session) {
-            return session.get(UserContext.class, itemId);
-        } catch (Exception e) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            UserContext userContext = session.get(UserContext.class, itemId);
+            transaction.commit();
+            return userContext;
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
             return null;
         }
     }
 
     public static void dbDrop(Integer itemId) {
-        try (session) {
-            Transaction transaction = session.beginTransaction();
-            var userContext = session.get(UserContext.class, itemId);
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            UserContext userContext = session.get(UserContext.class, itemId);
             if (userContext != null) {
                 session.delete(userContext);
                 transaction.commit();
             }
-        } catch (Exception e) {
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
         }
     }
