@@ -8,7 +8,7 @@
     <property name="connection.url">jdbc:postgresql://localhost:5432/dbname</property>
 
     <!-- DataBase Name-->
-    <property name="connection.username">username</property>
+    <property name="connection.username">admin</property>
 
     <!-- DataBase Password -->
     <property name="connection.password">password</property>
